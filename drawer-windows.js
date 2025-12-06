@@ -1,6 +1,22 @@
 // Attach behavior to open/close the drawers identified by data-index / id=drawer-N
 
-(function(){
+(function () {
+  // simple answer dictionary for 12 drawers (case-insensitive)
+  const ANSWERS = {
+    "1": "apple",
+    "2": "banana",
+    "3": "cherry",
+    "4": "date",
+    "5": "elderberry",
+    "6": "fig",
+    "7": "grape",
+    "8": "honeydew",
+    "9": "kiwi",
+    "10": "lemon",
+    "11": "mango",
+    "12": "nectarine"
+  };
+
   const openButtons = document.querySelectorAll('.open-btn[data-index]');
   const drawers = new Map();
   document.querySelectorAll('.drawer').forEach(d => {
@@ -8,7 +24,7 @@
     drawers.set(id, d);
     // close triggers inside drawer (backdrop or elements with [data-close])
     d.addEventListener('click', e => {
-      if (e.target.closest('[data-close]')) closeDrawerByEl(d);
+      if (e.target.closest('[data-close]')) closeDrawer(d);
     });
   });
 
@@ -24,38 +40,52 @@
     const id = `drawer-${index}`;
     const d = drawers.get(id);
     if (!d) return console.warn('No drawer:', id);
-    // close any other open drawers first (optional)
-    drawers.forEach((el, key) => {
+    // close others
+    drawers.forEach((el) => {
       if (el !== d) closeDrawer(el);
     });
     d.classList.add('open');
-    d.setAttribute('aria-hidden','false');
-    // focus management: find first focusable inside
-    const focusable = d.querySelector('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
-    if (focusable) focusable.focus();
-    // trap escape
-    document.addEventListener('keydown', escHandler);
-  }
-
-  function closeDrawerByEl(el){
-    closeDrawer(el);
+    d.setAttribute('aria-hidden', 'false');
+    // focus first input
+    const input = d.querySelector('input[name="answer"]');
+    if (input) input.focus();
   }
 
   function closeDrawer(el){
-    if (!el) return;
     el.classList.remove('open');
-    el.setAttribute('aria-hidden','true');
-    document.removeEventListener('keydown', escHandler);
+    el.setAttribute('aria-hidden', 'true');
   }
 
-  function escHandler(e){
-    if (e.key === 'Escape'){
-      // close the topmost open drawer
-      const open = Array.from(drawers.values()).reverse().find(d => d.classList.contains('open'));
-      if (open) closeDrawer(open);
-    }
-  }
+  // handle submissions and answer checking
+  document.querySelectorAll('.drawer form[data-index]').forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const idx = form.getAttribute('data-index');
+      const val = (form.answer.value || '').trim();
+      const feedbackEl = form.querySelector('.feedback');
+      const correct = ANSWERS[idx];
+      if (!correct) {
+        feedbackEl.textContent = 'No answer configured.';
+        feedbackEl.classList.remove('correct', 'incorrect');
+        return;
+      }
+      if (val.length === 0) {
+        feedbackEl.textContent = 'Please enter an answer.';
+        feedbackEl.classList.remove('correct', 'incorrect');
+        return;
+      }
+      if (val.toLowerCase() === String(correct).toLowerCase()) {
+        feedbackEl.textContent = 'Correct!';
+        feedbackEl.classList.add('correct');
+        feedbackEl.classList.remove('incorrect');
+      } else {
+        feedbackEl.textContent = 'Incorrect — try again.';
+        feedbackEl.classList.add('incorrect');
+        feedbackEl.classList.remove('correct');
+      }
+    });
+  });
 
-  // optional API for other scripts
+  // expose basic API
   window.DrawerWindows = { openDrawer, closeDrawer };
 })();
