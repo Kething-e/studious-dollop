@@ -1,3 +1,8 @@
+    export function init() {
+      createGrid();
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+
 
     let score = 0;
     let timer = 0;
@@ -38,10 +43,7 @@
     }
 
     // Initialize app
-    export function init() {
-      createGrid();
-      timerInterval = setInterval(updateTimer, 1000);
-    }
+
 
     // Start when page loads
     window.addEventListener('load', init);
