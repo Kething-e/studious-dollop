@@ -18,6 +18,7 @@
   };
 
   const openButtons = document.querySelectorAll('.open-btn[data-index]');
+  const startButton = document.querySelector('#start-all-btn');
   const drawers = new Map();
   document.querySelectorAll('.drawer').forEach(d => {
     const id = d.id; // e.g. drawer-1
@@ -34,6 +35,10 @@
       openDrawer(idx);
     });
   });
+
+  startButton.addEventListener('click', () => {
+    TimerGrid.init();
+    });
 
   // Open drawer by index (number or string)
   function openDrawer(index){
