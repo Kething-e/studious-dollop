@@ -43,4 +43,4 @@
     }
 
     // Start when page loads
-    window.addEventListener('load', init());
+    window.addEventListener('load', init);
