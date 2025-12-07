@@ -3,7 +3,7 @@
 
 // simple answer dictionary for 12 drawers (case-insensitive)
   const ANSWERS = {
-    "1": "apple",
+    "1": "CTF{us3_y0ur_bIg_bRAINs}",
     "2": "banana",
     "3": "cherry",
     "4": "date",
