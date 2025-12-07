@@ -41,8 +41,8 @@
     function init() {
       createGrid();
       timerInterval = setInterval(updateTimer, 1000);
+      print("TimerGrid initialized");
     }
 
     // Start when page loads
-    export{ init };
     window.addEventListener('load', init);
