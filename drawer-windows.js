@@ -17,7 +17,7 @@
     "12": "nectarine"
   };
 
-  const openButtons = document.querySelectorAll('.open-btn[data-index]');
+  const openButtons = document.querySelectorAll('.grid-cell');
   const drawers = new Map();
   document.querySelectorAll('.drawer').forEach(d => {
     const id = d.id; // e.g. drawer-1
