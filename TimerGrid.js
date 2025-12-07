@@ -37,7 +37,7 @@
     }
 
     // Initialize app
-    function init() {
+    export function init() {
       createGrid();
       timerInterval = setInterval(updateTimer, 1000);
     }
