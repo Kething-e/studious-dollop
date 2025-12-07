@@ -110,7 +110,7 @@
         cell.className = 'grid-cell';
         cell.innerHTML = `<span>${i}</span>`;
         cell.addEventListener('click', () => {
-            const idx = btn.getAttribute('data-index');
+            const idx = cell.getAttribute('data-index');
             openDrawer(idx);
         });
         gridContainer.appendChild(cell);
