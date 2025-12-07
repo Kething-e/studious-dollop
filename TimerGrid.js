@@ -26,6 +26,7 @@
       const gridContainer = document.getElementById('grid');
       for (let i = 1; i <= 9; i++) {
         const cell = document.createElement('div');
+        cell.setAttribute('data-index', i);
         cell.className = 'grid-cell';
         cell.innerHTML = `<span>${i}</span>`;
         cell.addEventListener('click', () => {
