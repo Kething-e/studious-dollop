@@ -4,9 +4,9 @@
 // simple answer dictionary for 12 drawers (case-insensitive)
   const ANSWERS = {
     "1": "CTF{us3_y0ur_bIg_bRAINs}",
-    "2": "banana",
-    "3": "cherry",
-    "4": "date",
+    "2": "CTF{rm1ng_Up_w1tH_jAv4_000AXPNPN0i}",
+    "3": "CTF{I_hATE_CinDErEllA",
+    "4": "CTF{H0tter_thAn_H0T}",
     "5": "elderberry",
     "6": "fig",
     "7": "grape",
