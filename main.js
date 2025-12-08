@@ -7,11 +7,11 @@
     "2": "CTF{rm1ng_Up_w1tH_jAv4_000AXPNPN0i}",
     "3": "CTF{I_hATE_CinDErEllA",
     "4": "CTF{H0tter_thAn_H0T}",
-    "5": "elderberry",
-    "6": "fig",
-    "7": "grape",
-    "8": "honeydew",
-    "9": "kiwi",
+    "5": "CTF{@sk_th3_1nt3rn_b64c4705}",
+    "6": "CTF{t1m3m@ch1n3_b476ca06}",
+    "7": "CTF{h1dd3n_1n_1m4g3_92f08d7c}",
+    "8": "CTF{BONJOVI}",
+    "9": "CTF{REDACTED}",
   };
 
   const SOLVED ={
