@@ -6,7 +6,7 @@ class SuperSecretLair {
         Scanner scanner = new Scanner(System.in); 
         System.out.print("Enter vault password: ");
         String userInput = scanner.next();
-	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	String input = userInput.substring("CTF{".length(),userInput.length()-1);
 	if (vaultDoor.checkPassword(input)) {
 	    System.out.println("Access granted.");
 	} else {
