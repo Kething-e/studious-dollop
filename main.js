@@ -108,7 +108,7 @@
 
     // Update timer display
     function updateTimer() {
-      if(SOLVED["1"] && SOLVED["2"] && SOLVED["3"] && SOLVED["4"] && SOLVED["5"] && SOLVED["6"] && SOLVED["7"] && SOLVED["8"] && SOLVED["9"] && SOLVED["10"] && SOLVED["11"] && SOLVED["12"]){
+      if(SOLVED["1"] && SOLVED["2"] && SOLVED["3"] && SOLVED["4"] && SOLVED["5"] && SOLVED["6"] && SOLVED["7"] && SOLVED["8"] && SOLVED["9"]){
         return;
       }
       else{          
