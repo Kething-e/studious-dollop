@@ -84,10 +84,8 @@
         SOLVED[idx] = true;
       }else if (SOLVED[idx]){
         feedbackEl.textContent = 'You have already solved this one.';
-        feedbackEl.classList.add('correct');
-        feedbackEl.classList.remove('incorrect');
       } else {
-        feedbackEl.textContent = 'Incorrect — try again.';
+        feedbackEl.textContent = 'Incorrect — try again..';
         feedbackEl.classList.add('incorrect');
         feedbackEl.classList.remove('correct');
       }
