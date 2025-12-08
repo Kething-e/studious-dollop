@@ -12,9 +12,6 @@
     "7": "grape",
     "8": "honeydew",
     "9": "kiwi",
-    "10": "lemon",
-    "11": "mango",
-    "12": "nectarine"
   };
 
   const SOLVED ={
@@ -26,10 +23,7 @@
     "6": false,
     "7": false,
     "8": false,
-    "9": false,
-    "10": false,
-    "11": false,
-    "12": false
+    "9": false
   }
    
   const drawers = new Map();
@@ -81,13 +75,17 @@
         feedbackEl.classList.remove('correct', 'incorrect');
         return;
       }
-      if (val.toLowerCase() === String(correct).toLowerCase()) {
+      if (val.toLowerCase() === String(correct).toLowerCase() && !SOLVED[idx]) {
         feedbackEl.textContent = 'Correct!';
         feedbackEl.classList.add('correct');
         feedbackEl.classList.remove('incorrect');
         score++;
         updateScore();
         SOLVED[idx] = true;
+      }else if (SOLVED[idx]){
+        feedbackEl.textContent = 'You have already solved this one.';
+        feedbackEl.classList.add('correct');
+        feedbackEl.classList.remove('incorrect');
       } else {
         feedbackEl.textContent = 'Incorrect — try again.';
         feedbackEl.classList.add('incorrect');
