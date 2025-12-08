@@ -16,6 +16,21 @@
     "11": "mango",
     "12": "nectarine"
   };
+
+  const SOLVED ={
+    "1": false,
+    "2": false,
+    "3": false,
+    "4": false,
+    "5": false,
+    "6": false,
+    "7": false,
+    "8": false,
+    "9": false,
+    "10": false,
+    "11": false,
+    "12": false
+  }
    
   const drawers = new Map();
   document.querySelectorAll('.drawer').forEach(d => {
@@ -70,6 +85,9 @@
         feedbackEl.textContent = 'Correct!';
         feedbackEl.classList.add('correct');
         feedbackEl.classList.remove('incorrect');
+        score++;
+        updateScore();
+        SOLVED[idx] = true;
       } else {
         feedbackEl.textContent = 'Incorrect — try again.';
         feedbackEl.classList.add('incorrect');
@@ -94,8 +112,13 @@
 
     // Update timer display
     function updateTimer() {
-      timer++;
-      document.getElementById('timer').textContent = formatTime(timer);
+      if(SOLVED["1"] && SOLVED["2"] && SOLVED["3"] && SOLVED["4"] && SOLVED["5"] && SOLVED["6"] && SOLVED["7"] && SOLVED["8"] && SOLVED["9"] && SOLVED["10"] && SOLVED["11"] && SOLVED["12"]){
+        return;
+      }
+      else{          
+        timer++;
+        document.getElementById('timer').textContent = formatTime(timer);
+      }
     }
 
     // Update score display
